@@ -8,11 +8,9 @@ import (
 	"math"
 	"math/rand" // пакет для поддержки HTTP протокола
 	"strconv"
-
 	"github.com/davvo/mercator"
 	"github.com/fogleman/gg"
-	geojson "github.com/paulmach/go.geojson"
-	// пакет для работы с  UTF-8 строками
+	geojson "github.com/paulmach/go.geojson"	// пакет для работы с  UTF-8 строками
 )
 
 const width, height = 256, 256
@@ -55,13 +53,13 @@ func getPNG(featureCollectionJSON []byte, z float64, x float64, y float64) (stri
 	dc.InvertY()
 	//рисуем полигоны
 	forEachPolygon(dc, coordinates, func(polygonCoordinates [][]float64) {
-		dc.SetRGB(rand.Float64(), rand.Float64(), rand.Float64())
+		dc.SetRGB(25,25,255)
 		drawByPolygonCoordinates(dc, polygonCoordinates, scale, dc.Fill, z, x, y)
 	})
 	//рисуем контуры полигонов
 	dc.SetLineWidth(2)
 	forEachPolygon(dc, coordinates, func(polygonCoordinates [][]float64) {
-		dc.SetRGB(rand.Float64(), rand.Float64(), rand.Float64())
+		dc.SetRGB(0,0,0)
 		drawByPolygonCoordinates(dc, polygonCoordinates, scale, dc.Stroke, z, x, y)
 	})
 
